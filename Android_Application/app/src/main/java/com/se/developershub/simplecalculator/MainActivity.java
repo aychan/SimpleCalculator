@@ -9,7 +9,6 @@ package com.se.developershub.simplecalculator;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -93,7 +92,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 calculatorInput.add("1");
-                numberSTR = numberSTR + "1";
                 printExpression(SCREEN, calculatorInput);
             }
         });
@@ -101,7 +99,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 calculatorInput.add("2");
-                numberSTR = numberSTR + "2";
                 printExpression(SCREEN, calculatorInput);
             }
         });
@@ -109,7 +106,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 calculatorInput.add("3");
-                numberSTR = numberSTR + "3";
                 printExpression(SCREEN, calculatorInput);
             }
         });
@@ -117,7 +113,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 calculatorInput.add("4");
-                numberSTR = numberSTR + "4";
                 printExpression(SCREEN, calculatorInput);
             }
         });
@@ -125,7 +120,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 calculatorInput.add("5");
-                numberSTR = numberSTR + "5";
                 printExpression(SCREEN, calculatorInput);
             }
         });
@@ -133,7 +127,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 calculatorInput.add("6");
-                numberSTR = numberSTR + "6";
                 printExpression(SCREEN, calculatorInput);
             }
         });
@@ -141,7 +134,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 calculatorInput.add("7");
-                numberSTR = numberSTR + "7";
                 printExpression(SCREEN, calculatorInput);
             }
         });
@@ -149,7 +141,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 calculatorInput.add("8");
-                numberSTR = numberSTR + "8";
                 printExpression(SCREEN, calculatorInput);
             }
         });
@@ -157,7 +148,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 calculatorInput.add("9");
-                numberSTR = numberSTR + "9";
                 printExpression(SCREEN, calculatorInput);
             }
         });
@@ -165,7 +155,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 calculatorInput.add("0");
-                numberSTR = numberSTR + "0";
                 printExpression(SCREEN, calculatorInput);
             }
         });
@@ -173,7 +162,6 @@ public class MainActivity extends AppCompatActivity {
         ADD.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                updateArray();
                 calculatorInput.add("+");
                 printExpression(SCREEN, calculatorInput);
             }
@@ -181,7 +169,6 @@ public class MainActivity extends AppCompatActivity {
         SUBTRACT.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                updateArray();
                 calculatorInput.add("-");
                 printExpression(SCREEN, calculatorInput);
             }
@@ -189,7 +176,6 @@ public class MainActivity extends AppCompatActivity {
         MULTIPLY.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                updateArray();
                 calculatorInput.add("*");
                 printExpression(SCREEN, calculatorInput);
             }
@@ -197,7 +183,6 @@ public class MainActivity extends AppCompatActivity {
         DIVIDE.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                updateArray();
                 calculatorInput.add("/");
                 printExpression(SCREEN, calculatorInput);
             }
@@ -205,7 +190,6 @@ public class MainActivity extends AppCompatActivity {
         CLEAR.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                numberSTR = "";
                 clearResult();
             }
         });
@@ -217,7 +201,6 @@ public class MainActivity extends AppCompatActivity {
                     if (!calculatorInput.get(calculatorInput.size() - 1).matches("^-?\\d+$")) {
                         Toast.makeText(MainActivity.this, "Please complete your expression", Toast.LENGTH_SHORT).show();
                     } else {
-                        updateArray();
                         String result = String.valueOf(calculateResult());
                         clearArray();
                         calculatorInput.add(result);
@@ -242,8 +225,8 @@ public class MainActivity extends AppCompatActivity {
         if(calculatorInput.size()!=0){
             calculatorInput.remove(calculatorInput.size()-1);
             printExpression(SCREEN, calculatorInput);
-        }
 
+        }
     }
 
     /**
@@ -269,15 +252,7 @@ public class MainActivity extends AppCompatActivity {
         view.setText(expression.toString());
     }
 
-    void updateArray(){
-        if(numberSTR.length() != 0) {
-            for (int i = 0; i < numberSTR.length(); i++) {
-                deleteValues();
-            }
-            calculatorInput.add(numberSTR);
-            numberSTR = "";
-        }
-    }
+
     /**
      * Compute the result and return the value
      * @return
@@ -292,12 +267,16 @@ public class MainActivity extends AppCompatActivity {
         long VAR2;
         int OPi;
         int OPstack;
+        String numberSTR = "";
+
             for(String i : calculatorInput){
 
                 if(i.matches("^-?\\d+$")){
                     // i is a digit
-                    numbers.push(Long.valueOf(i));
+                    numberSTR = numberSTR + "" + i;
                 }else{
+                    numbers.push(Long.valueOf(numberSTR));
+                    numberSTR = "";
                     // i is an operand
                         OPi = operandPrecedence(i);
                     if(operands.isEmpty()){
