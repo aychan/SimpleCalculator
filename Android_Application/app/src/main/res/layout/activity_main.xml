@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.se.developershub.simplecalculator.MainActivity">
+
+    <!--android:paddingLeft="@dimen/activity_horizontal_margin"-->
+    <!--android:paddingRight="@dimen/activity_horizontal_margin"-->
+
+
+<TextView
+    android:id="@+id/tv_screen"
+    android:textAlignment="viewEnd"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" />
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+
+        android:columnCount="5"
+        android:rowCount="4">
+        <Button
+            android:id="@+id/SEVEN"
+            android:text="7"/>
+
+        <Button
+            android:id="@+id/EIGHT"
+            android:text="8"/>
+        <Button
+            android:id="@+id/NINE"
+            android:text="9"/>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_height="wrap_content"
+            android:layout_columnSpan="2"
+            android:layout_width="wrap_content">
+        <Button
+            android:id="@+id/CLEAR"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:text="CLR"/>
+        <Button
+            android:id="@+id/DELETE"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:text="DEL"/>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/FOUR"
+            android:text="4"/>
+        <Button
+            android:id="@+id/FIVE"
+            android:text="5"/>
+        <Button
+            android:id="@+id/SIX"
+            android:text="6"/>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_height="wrap_content"
+            android:layout_columnSpan="2"
+            android:layout_width="wrap_content">
+        <Button
+            android:id="@+id/MULTIPLY"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:text="X"/>
+        <Button
+            android:id="@+id/DIVIDE"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:text="/"/>
+    </LinearLayout>
+
+        <Button
+            android:id="@+id/ONE"
+            android:text="1"/>
+        <Button
+            android:id="@+id/TWO"
+            android:text="2"/>
+        <Button
+            android:id="@+id/THREE"
+            android:text="3"/>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_height="wrap_content"
+        android:layout_columnSpan="2"
+        android:layout_width="wrap_content">
+        <Button
+            android:id="@+id/ADD"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:text="+"/>
+        <Button
+            android:id="@+id/SUBTRACT"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:text="-"/>
+    </LinearLayout>
+
+
+
+        <Button
+            android:id="@+id/ZERO"
+            android:text="0"/>
+        <Button />
+        <Button />
+        <Button
+            android:id="@+id/EQUALS"
+            android:layout_columnSpan="2"
+            android:text="="/>
+
+
+
+
+    </GridLayout>
+
+</RelativeLayout>
